@@ -99,12 +99,16 @@
       button.addEventListener("click", () => {
         frase.classList.add("fade-out");
 
-        setTimeout(() => {
-          indice++;
-          if (indice >= contenuti.length) {
-            indice = contenuti.length - 1;
-            button.style.display = "none";
-          }
+       setTimeout(() => {
+    indice++;
+    if (indice >= contenuti.length) {
+      // ultima frase raggiunta: cambia il pulsante in link WhatsApp
+      indice = contenuti.length - 1;
+      button.innerText = "Scrivimi su WhatsApp";
+      button.onclick = () => {
+        // sostituisci NUMERODITEL con il tuo numero completo con prefisso internazionale senza +
+        window.open("https://wa.me/3296731447", "_blank");
+      };
           frase.innerText = contenuti[indice].frase;
           button.innerText = contenuti[indice].risposta;
 
